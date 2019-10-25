@@ -1,0 +1,19 @@
+几个遇上的问题记录：
+一、需要使用python2.7一个马上要过期的版本，还有相应的anaconda2，老掉牙；
+
+二、
+在创建conda下的python环境时，会缺少某些包导致报错，需要先安装命令conda install pip/conda install scipy
+# Create a new conda environment with Python 2.7.x
+conda create -n gl-env python=2.7 anaconda=4.0.0
+
+三、
+注意你是在哪个环境的python和pip下使用指令，conda下有一套，如果你开始安装了python的还会有另外一套
+# Activate the conda environment
+activate gl-env
+
+四、
+import graphlab时会提示缺少依赖库，根据提示安装就行
+graphlab.get_dependencies()
+
+五、
+电信网络pip国外的源经常会失败，联通快的一比，干活方便

@@ -1,0 +1,2 @@
+    在我们安装graphlab的时候单独建立了一个gl-env环境，这是因为单独的环境可以不受外界包的干扰和冲突。安装包的过程中使用了conda和pip两个命令，这两个命令都会将需要安装的包放到site-packege这个目录下，但conda可以将包放在目前激活的环境中，保证了环境的独立性。
+    另外要清楚python是在哪个环境下运行，如果你自己安装了个python，conda会帮你安装一个，然后conda create python anaconda会给你单独在开辟一个，这时候你会有三个python路径。我就问你怕不怕？

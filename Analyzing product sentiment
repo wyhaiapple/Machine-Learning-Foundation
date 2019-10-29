@@ -1,0 +1,65 @@
+一、计算评论中给出关键字的出现次数
+#计数函数
+def words_count(x,y):
+    if y in x:
+        return x[y]
+    else:
+        return 0
+        
+#apply函数调用
+for key_word in selected_words:
+    products[key_word] = products['word_count'].apply(lambda x : words_count(x,key_word))
+    
+('awesome',)
+2090
+('great',)
+45206
+('fantastic',)
+932
+('amazing',)
+1363
+('love',)
+42065
+('horrible',)
+734
+('bad',)
+3724
+('terrible',)
+748
+('awful',)
+383
+('wow',)
+144
+('hate',)
+1220
+
+二、建立对应选定字段的逻辑分类模型
+selected_words_model = graphlab.logistic_classifier.create(train_data,
+                                                          target='sentiment',
+                                                          features=selected_words,
+                                                          validation_set=test_data)
+selected_words_model['coefficients']
+name	index	class	value	stderr
+terrible	None	1	-2.09049998487	0.0967241912229
+horrible	None	1	-1.99651800559	0.0973584169028
+awful	None	1	-1.76469955631	0.134679803365
+hate	None	1	-1.40916406276	0.0771983993506
+bad	None	1	-0.985827369929	0.0433603009142
+wow	None	1	-0.0541450123333	0.275616449416
+great	None	1	0.883937894898	0.0217379527921
+fantastic	None	1	0.891303090304	0.154532343591
+amazing	None	1	0.892802422508	0.127989503231
+awesome	None	1	1.05800888878	0.110865296265
+
+三、比较两种模型的准确度
+sentiment_model.evaluate(test_data)
+{'accuracy': 0.916256305548883,
+ 'auc': 0.9446492867438502,
+ 
+ selected_words_model.evaluate(test_data)
+{'accuracy': 0.8431419649291376,
+ 'auc': 0.6648096413721418,
+ 
+ 四、两种模型的差异
+ 
+ 问题：majority class classifier搞不清楚是干什么的，还有怎么用baseline去比较两个模型，需要再看看视频
